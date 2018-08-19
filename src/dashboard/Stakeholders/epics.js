@@ -1,3 +1,6 @@
+/**
+ * Epics  for stakeholders
+ */
 
 import { ofType } from 'redux-observable';
 import { from, of } from 'rxjs';

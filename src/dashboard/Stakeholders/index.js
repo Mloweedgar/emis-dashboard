@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { createSelector } from 'reselect';
 import { connect } from 'react-redux'
 import { Drawer, Button, Checkbox, Col, Input, Popover, Row } from 'antd';
 import classnames from 'classnames';
@@ -8,6 +9,7 @@ import Header from './components/Header';
 import ContactList from './components/List';
 import StakeholderForm from './components/StakeholderForm';
 import { getStakeholders, searchStakeholders } from './actions';
+import { stakeholdersSelector } from './selectors';
 /* load styles */
 import styles from './styles.css';
 const cx = classnames.bind(styles);
@@ -151,11 +153,12 @@ class Stakeholders extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    stakeholders: state.contacts.data
-  }
-}
+const selectStakeholders = createSelector(
+  [
+    stakeholdersSelector
+  ],
+  (stakeholders) => ({stakeholders})
+)
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -170,6 +173,6 @@ const mapDispatchToProps = dispatch => {
 
 
 export default connect(
-  mapStateToProps,
+  selectStakeholders,
   mapDispatchToProps
 )(Stakeholders)

@@ -1,4 +1,6 @@
-import { Button, Checkbox, Col, List, Popover, Row } from 'antd';
+import {
+  Button, Checkbox, Col, List, Popover, Row,
+} from 'antd';
 import PropTypes from 'prop-types';
 import React from 'react';
 

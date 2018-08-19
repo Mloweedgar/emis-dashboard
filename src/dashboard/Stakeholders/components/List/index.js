@@ -1,10 +1,13 @@
 import { List } from 'antd';
 import React from 'react';
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 import ListFooter from './footer';
 /* import component */
 import Contact from './item';
 import { getStakeholders, selectedStakeholder } from '../../actions';
+import { stakeholdersSelector } from '../../selectors';
 
 
 /**
@@ -42,14 +45,31 @@ class ContactsList extends React.Component {
   }
 }
 
-const mapStateToProps = state => (
-  { stakeholders: state.contacts.data });
+const selectStakeholders = createSelector(
+  [
+    stakeholdersSelector,
+  ],
+  stakeholders => ({ stakeholders }),
+);
+
 const mapDispatchToProps = dispatch => ({
   triggerGetStakeholders: () => dispatch(getStakeholders()),
   clickedStakeholder: stakeholder => dispatch(selectedStakeholder(stakeholder)),
 });
 
 export default connect(
-  mapStateToProps,
+  selectStakeholders,
   mapDispatchToProps,
 )(ContactsList);
+
+/* Validating props types */
+ContactsList.propTypes = {
+  triggerGetStakeholders: PropTypes.func,
+  stakeholders: PropTypes.array,
+  clickedStakeholder: PropTypes.object,
+};
+
+ContactsList.defaultProps = {
+  triggerGetStakeholders: () => {},
+  clickedStakeholder: {},
+};
