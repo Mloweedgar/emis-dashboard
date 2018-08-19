@@ -10,6 +10,6 @@ export const TOGGLE_LEFT_NAVIGATION_DRAWER = 'TOGGLE_LEFT_NAVIGATION_DRAWER';
 export const storeStakeHolders = stakeholders => ({ type: STORE_STAKEHOLDERS, stakeholders });
 export const searchStakeholders = searchText => ({ type: SEARCH_STAKEHOLDERS, searchText });
 export const selectedStakeholder = stakeholder => ({ type: SELECTED_STAKEHOLDER, stakeholder });
-export const toggleLefNavigationDrawer = isDrawerOPen => (
-  { type: TOGGLE_LEFT_NAVIGATION_DRAWER, isDrawerOPen });
+export const toggleLefNavigationDrawer = isDrawerOpen => (
+  { type: TOGGLE_LEFT_NAVIGATION_DRAWER, isDrawerOpen });
 export const getStakeholders = () => ({ type: GET_STAKEHOLDERS });

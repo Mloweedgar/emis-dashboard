@@ -8,8 +8,8 @@ import Filters from './components/Filters';
 import Header from './components/Header';
 import ContactList from './components/List';
 import StakeholderForm from './components/StakeholderForm';
-import { getStakeholders, searchStakeholders } from './actions';
-import { stakeholdersSelector } from './selectors';
+import { getStakeholders, searchStakeholders, toggleLefNavigationDrawer } from './actions';
+import { stakeholdersSelector, isDrawerOpenSelector } from './selectors';
 /* load styles */
 import styles from './styles.css';
 const cx = classnames.bind(styles);
@@ -45,16 +45,16 @@ class Stakeholders extends Component {
   constructor(props) {
     super(props);
     this.state = { visible: false };
+    this.showDrawer = this.showDrawer.bind(this);
   }
 
   showDrawer = () => {
-    this.setState({ visible: true });
+    console.log('show drawer called');
+    this.props.toggleLefNavigationDrawer(true);
   }
 
   onClose = () => {
-    this.setState({
-      visible: false,
-    });
+    this.props.toggleLefNavigationDrawer(false);
   };
 
   onSearch = (searchText) => {
@@ -63,8 +63,7 @@ class Stakeholders extends Component {
   }
 
   render() {
-    const { visible } = this.state;
-    const { stakeholders } = this.props;
+    const { stakeholders, visible, toggleLefNavigationDrawer } = this.props;
     return (
       <Fragment>
         <Drawer
@@ -155,9 +154,10 @@ class Stakeholders extends Component {
 
 const selectStakeholders = createSelector(
   [
-    stakeholdersSelector
+    stakeholdersSelector,
+    isDrawerOpenSelector,
   ],
-  (stakeholders) => ({stakeholders})
+  (stakeholders, visible) => ({stakeholders, visible})
 )
 
 const mapDispatchToProps = dispatch => {
@@ -167,7 +167,10 @@ const mapDispatchToProps = dispatch => {
     },
     searchStakeholders: data => {
       dispatch(searchStakeholders(data))
-    }
+    },
+    toggleLefNavigationDrawer: data => {
+      dispatch(toggleLefNavigationDrawer(data))
+    },
   }
 }
 

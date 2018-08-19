@@ -23,22 +23,10 @@ const fakeStore = {
     },
   },
   contacts: {
-    data: [
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-      { name: 'Tanzania Red Cross Society', phone: '+233 54534545', email: 'trcs@mail.com' },
-    ],
-    total: 100,
+    data: [],
+    total: 0,
+    selected: {},
+    isDrawerOpen: false,
   },
 };
 
